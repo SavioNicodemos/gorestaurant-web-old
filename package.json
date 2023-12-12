@@ -1,60 +1,61 @@
 {
-    "name": "go-restaurant",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.3.2",
-        "@testing-library/user-event": "^7.1.2",
-        "@types/jest": "^24.0.0",
-        "@types/node": "^12.0.0",
-        "@types/react": "^16.9.0",
-        "@types/react-dom": "^16.9.0",
-        "@types/react-modal": "^3.10.5",
-        "@unform/core": "^2.1.0",
-        "@unform/web": "^2.1.0",
-        "axios": "^0.19.2",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-icons": "^3.10.0",
-        "react-modal": "^3.11.2",
-        "react-router-dom": "^5.2.0",
-        "styled-components": "^5.1.0",
-        "typescript": "~3.7.2",
-        "yup": "^0.29.0"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "1.4.1",
-        "@types/react-router-dom": "^5.1.4",
-        "@types/styled-components": "^5.1.0",
-        "@types/yup": "^0.26.36",
-        "@vitejs/plugin-react": "^4.2.1",
-        "axios-mock-adapter": "^1.18.1",
-        "jest-environment-jsdom-sixteen": "^1.0.3",
-        "json-server": "^0.16.1",
-        "ts-jest": "^26.0.0",
-        "vite": "^5.0.7",
-        "vite-plugin-svgr": "^4.2.0",
-        "vite-tsconfig-paths": "^4.2.2"
-    },
-    "scripts": {
-        "start": "vite",
-        "build": "tsc && vite build",
-        "serve:ui": "vite preview",
-        "serve:back": "json-server --watch server.json --port 3333",
-        "lint:check": "pnpm dlx @biomejs/biome check src",
-        "lint:fix": "pnpm dlx @biomejs/biome check --apply src"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+  "name": "go-restaurant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve:ui": "vite preview",
+    "serve:back": "json-server --watch server.json --port 3333",
+    "lint:check": "pnpm dlx @biomejs/biome check src",
+    "lint:fix": "pnpm dlx @biomejs/biome check --apply src",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@unform/core": "^2.1.6",
+    "@unform/web": "^2.1.6",
+    "axios": "^0.19.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-icons": "^3.11.0",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^5.3.4",
+    "styled-components": "^5.3.11",
+    "typescript": "~3.7.7",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.4.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.20.55",
+    "@types/react": "^16.14.52",
+    "@types/react-dom": "^16.9.24",
+    "@types/react-modal": "^3.16.3",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.34",
+    "@types/yup": "^0.26.37",
+    "@vitejs/plugin-react": "^4.2.1",
+    "axios-mock-adapter": "^1.22.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "json-server": "^0.16.3",
+    "ts-jest": "^26.5.6",
+    "vite": "^5.0.7",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.2.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
