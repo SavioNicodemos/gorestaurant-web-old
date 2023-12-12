@@ -30,7 +30,7 @@ const Food = ({ food, handleDelete, handleEditFood }: IProps) => {
   }
 
   return (
-    <Container available={isAvailable}>
+    <Container $available={isAvailable}>
       <header>
         <img src={food.image} alt={food.name} />
       </header>

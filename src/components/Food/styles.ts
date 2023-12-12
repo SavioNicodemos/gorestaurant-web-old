@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 interface IFoodPlateProps {
-  available: boolean;
+  $available: boolean;
 }
 
 export const Container = styled.div<IFoodPlateProps>`
@@ -17,7 +17,7 @@ export const Container = styled.div<IFoodPlateProps>`
     text-align: center;
 
     ${props =>
-      !props.available &&
+      !props.$available &&
       css`
         opacity: 0.3;
       `};
