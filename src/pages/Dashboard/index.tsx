@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Header from '../../components/Header';
 
@@ -11,7 +11,7 @@ import ModalEditFood from '../../components/ModalEditFood';
 
 import { FoodsContainer } from './styles';
 
-interface IFoodPlate {
+type IFoodPlate = {
   id: number;
   name: string;
   image: string;
@@ -20,7 +20,7 @@ interface IFoodPlate {
   available: boolean;
 }
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const [foods, setFoods] = useState<IFoodPlate[]>([]);
   const [editingFood, setEditingFood] = useState<IFoodPlate>({} as IFoodPlate);
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,21 +34,17 @@ const Dashboard: React.FC = () => {
     loadFoods();
   }, []);
 
-  async function handleAddFood(
-    food: Omit<IFoodPlate, 'id' | 'available'>,
-  ): Promise<void> {
+  async function handleAddFood(food: Omit<IFoodPlate, 'id' | 'available'>): Promise<void> {
     try {
       const response = await api.post('/foods', food);
 
       setFoods([...foods, response.data]);
     } catch (err) {
-      console.log(err);
+      console.warn(err);
     }
   }
 
-  async function handleUpdateFood(
-    food: Omit<IFoodPlate, 'id' | 'available'>,
-  ): Promise<void> {
+  async function handleUpdateFood(food: Omit<IFoodPlate, 'id' | 'available'>): Promise<void> {
     try {
       Object.assign(editingFood, food);
 
@@ -63,7 +59,7 @@ const Dashboard: React.FC = () => {
         setFoods(newFoods);
       }
     } catch (err) {
-      console.log(err);
+      console.warn(err);
     }
   }
 
@@ -98,11 +94,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Header openModal={toggleModal} />
-      <ModalAddFood
-        isOpen={modalOpen}
-        setIsOpen={toggleModal}
-        handleAddFood={handleAddFood}
-      />
+      <ModalAddFood isOpen={modalOpen} setIsOpen={toggleModal} handleAddFood={handleAddFood} />
       <ModalEditFood
         isOpen={editModalOpen}
         setIsOpen={toggleEditModal}
@@ -110,16 +102,15 @@ const Dashboard: React.FC = () => {
         handleUpdateFood={handleUpdateFood}
       />
 
-      <FoodsContainer data-testid="foods-list">
-        {foods &&
-          foods.map(food => (
-            <Food
-              key={food.id}
-              food={food}
-              handleDelete={handleDeleteFood}
-              handleEditFood={handleEditFood}
-            />
-          ))}
+      <FoodsContainer data-testid='foods-list'>
+        {foods?.map(food => (
+          <Food
+            key={food.id}
+            food={food}
+            handleDelete={handleDeleteFood}
+            handleEditFood={handleEditFood}
+          />
+        ))}
       </FoodsContainer>
     </>
   );

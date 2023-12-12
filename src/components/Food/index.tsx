@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-interface IFoodPlate {
+type IFoodPlate = {
   id: number;
   name: string;
   image: string;
@@ -13,20 +12,16 @@ interface IFoodPlate {
   available: boolean;
 }
 
-interface IProps {
+type IProps = {
   food: IFoodPlate;
-  handleDelete: (id: number) => {};
+  handleDelete: (id: number) => void;
   handleEditFood: (food: IFoodPlate) => void;
 }
 
-const Food: React.FC<IProps> = ({
-  food,
-  handleDelete,
-  handleEditFood,
-}: IProps) => {
+const Food = ({ food, handleDelete, handleEditFood }: IProps) => {
   const [isAvailable, setIsAvailable] = useState(food.available);
 
-  async function toggleAvailable(): Promise<void> {
+  function toggleAvailable() {
     setIsAvailable(!isAvailable);
   }
 
@@ -39,18 +34,18 @@ const Food: React.FC<IProps> = ({
       <header>
         <img src={food.image} alt={food.name} />
       </header>
-      <section className="body">
+      <section className='body'>
         <h2>{food.name}</h2>
         <p>{food.description}</p>
-        <p className="price">
+        <p className='price'>
           R$ <b>{food.price}</b>
         </p>
       </section>
-      <section className="footer">
-        <div className="icon-container">
+      <section className='footer'>
+        <div className='icon-container'>
           <button
-            type="button"
-            className="icon"
+            type='button'
+            className='icon'
             onClick={() => setEditingFood()}
             data-testid={`edit-food-${food.id}`}
           >
@@ -58,8 +53,8 @@ const Food: React.FC<IProps> = ({
           </button>
 
           <button
-            type="button"
-            className="icon"
+            type='button'
+            className='icon'
             onClick={() => handleDelete(food.id)}
             data-testid={`remove-food-${food.id}`}
           >
@@ -67,18 +62,18 @@ const Food: React.FC<IProps> = ({
           </button>
         </div>
 
-        <div className="availability-container">
+        <div className='availability-container'>
           <p>{isAvailable ? 'Disponível' : 'Indisponível'}</p>
 
-          <label htmlFor={`available-switch-${food.id}`} className="switch">
+          <label htmlFor={`available-switch-${food.id}`} className='switch'>
             <input
               id={`available-switch-${food.id}`}
-              type="checkbox"
+              type='checkbox'
               checked={isAvailable}
               onChange={toggleAvailable}
               data-testid={`change-status-food-${food.id}`}
             />
-            <span className="slider" />
+            <span className='slider' />
           </label>
         </div>
       </section>

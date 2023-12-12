@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, fireEvent, act, wait } from '@testing-library/react';
+import { act, fireEvent, render, wait } from '@testing-library/react';
 import AxiosMock from 'axios-mock-adapter';
 import api from '../../services/api';
 
@@ -14,32 +14,26 @@ describe('Dashboard', () => {
       {
         id: 1,
         name: 'Ao molho',
-        description:
-          'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+        description: 'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
         price: '19.90',
         available: true,
-        image:
-          'https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png',
+        image: 'https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png',
       },
       {
         id: 2,
         name: 'Veggie',
-        description:
-          'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
+        description: 'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
         price: '19.90',
         available: true,
-        image:
-          'https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png',
+        image: 'https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png',
       },
       {
         id: 3,
         name: 'A la Camarón',
-        description:
-          'Macarrão com vegetais de primeira linha e camarão dos 7 mares.',
+        description: 'Macarrão com vegetais de primeira linha e camarão dos 7 mares.',
         price: '19.90',
         available: true,
-        image:
-          'https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png',
+        image: 'https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png',
       },
     ]);
 
@@ -50,28 +44,20 @@ describe('Dashboard', () => {
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-    expect(
-      getByText(
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Macarrão ao molho branco, fughi e cheiro verde das montanhas.')).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
 
     expect(getByText('Veggie')).toBeTruthy();
     expect(
-      getByText(
-        'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
-      ),
+      getByText('Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.')
     ).toBeTruthy();
     expect(getByTestId('remove-food-2')).toBeTruthy();
     expect(getByTestId('edit-food-3')).toBeTruthy();
 
     expect(getByText('A la Camarón')).toBeTruthy();
     expect(
-      getByText(
-        'Macarrão com vegetais de primeira linha e camarão dos 7 mares.',
-      ),
+      getByText('Macarrão com vegetais de primeira linha e camarão dos 7 mares.')
     ).toBeTruthy();
     expect(getByTestId('remove-food-3')).toBeTruthy();
     expect(getByTestId('edit-food-3')).toBeTruthy();
@@ -80,9 +66,7 @@ describe('Dashboard', () => {
   it('should be able to add a new food plate', async () => {
     apiMock.onGet('foods').reply(200, []);
 
-    const { getByText, getByTestId, getByPlaceholderText, debug } = render(
-      <Dashboard />,
-    );
+    const { getByText, getByTestId, getByPlaceholderText, debug } = render(<Dashboard />);
 
     act(() => {
       fireEvent.click(getByText('Novo Prato'));
@@ -101,8 +85,7 @@ describe('Dashboard', () => {
       fireEvent.change(inputValue, { target: { value: '19.90' } });
       fireEvent.change(inputDescription, {
         target: {
-          value:
-            'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+          value: 'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
         },
       });
     });
@@ -111,14 +94,13 @@ describe('Dashboard', () => {
     expect(inputName.value).toBe('Ao molho');
     expect(inputValue.value).toBe('19.90');
     expect(inputDescription.value).toBe(
-      'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+      'Macarrão ao molho branco, fughi e cheiro verde das montanhas.'
     );
 
     apiMock.onPost('foods').reply(200, {
       id: 1,
       name: 'Ao molho',
-      description:
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+      description: 'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
       price: '19.90',
       available: true,
       image: 'http://rocketseat.com.br',
@@ -133,11 +115,7 @@ describe('Dashboard', () => {
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-    expect(
-      getByText(
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Macarrão ao molho branco, fughi e cheiro verde das montanhas.')).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
   });
@@ -147,28 +125,21 @@ describe('Dashboard', () => {
       {
         id: 1,
         name: 'Ao molho',
-        description:
-          'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+        description: 'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
         price: '19.90',
         available: true,
         image: 'http://rocketseat.com.br',
       },
     ]);
 
-    const { getByText, getByTestId, getByPlaceholderText } = render(
-      <Dashboard />,
-    );
+    const { getByText, getByTestId, getByPlaceholderText } = render(<Dashboard />);
 
     await wait(() => expect(getByText('Ao molho')).toBeTruthy(), {
       timeout: 200,
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-    expect(
-      getByText(
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Macarrão ao molho branco, fughi e cheiro verde das montanhas.')).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
 
@@ -189,8 +160,7 @@ describe('Dashboard', () => {
       fireEvent.change(inputValue, { target: { value: '21.90' } });
       fireEvent.change(inputDescription, {
         target: {
-          value:
-            'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
+          value: 'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
         },
       });
     });
@@ -199,14 +169,13 @@ describe('Dashboard', () => {
     expect(inputName.value).toBe('Veggie');
     expect(inputValue.value).toBe('21.90');
     expect(inputDescription.value).toBe(
-      'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
+      'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.'
     );
 
     apiMock.onPut('foods/1').reply(200, {
       id: 1,
       name: 'Veggie',
-      description:
-        'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
+      description: 'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
       price: '21.90',
       available: true,
       image: 'http://rocketseat.com.br',
@@ -222,9 +191,7 @@ describe('Dashboard', () => {
 
     expect(getByText('Veggie')).toBeTruthy();
     expect(
-      getByText(
-        'Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.',
-      ),
+      getByText('Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.')
     ).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
@@ -235,8 +202,7 @@ describe('Dashboard', () => {
       {
         id: 1,
         name: 'Ao molho',
-        description:
-          'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+        description: 'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
         price: '19.90',
         available: true,
         image: 'http://rocketseat.com.br',
@@ -252,11 +218,7 @@ describe('Dashboard', () => {
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-    expect(
-      getByText(
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Macarrão ao molho branco, fughi e cheiro verde das montanhas.')).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
 
@@ -272,8 +234,7 @@ describe('Dashboard', () => {
       {
         id: 1,
         name: 'Ao molho',
-        description:
-          'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+        description: 'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
         price: '19.90',
         available: true,
         image: 'http://rocketseat.com.br',
@@ -287,11 +248,7 @@ describe('Dashboard', () => {
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-    expect(
-      getByText(
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Macarrão ao molho branco, fughi e cheiro verde das montanhas.')).toBeTruthy();
     expect(getByText('Disponível')).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
@@ -299,8 +256,7 @@ describe('Dashboard', () => {
     apiMock.onPut('foods/1').reply(200, {
       id: 1,
       name: 'Ao molho',
-      description:
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
+      description: 'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
       price: '19.90',
       available: false,
       image: 'http://rocketseat.com.br',
@@ -315,11 +271,7 @@ describe('Dashboard', () => {
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-    expect(
-      getByText(
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Macarrão ao molho branco, fughi e cheiro verde das montanhas.')).toBeTruthy();
     expect(getByText('Indisponível')).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
@@ -333,11 +285,7 @@ describe('Dashboard', () => {
     });
 
     expect(getByText('Ao molho')).toBeTruthy();
-    expect(
-      getByText(
-        'Macarrão ao molho branco, fughi e cheiro verde das montanhas.',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Macarrão ao molho branco, fughi e cheiro verde das montanhas.')).toBeTruthy();
     expect(getByText('Disponível')).toBeTruthy();
     expect(getByTestId('remove-food-1')).toBeTruthy();
     expect(getByTestId('edit-food-1')).toBeTruthy();
