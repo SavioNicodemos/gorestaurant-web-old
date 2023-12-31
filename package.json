@@ -2,7 +2,6 @@
   "name": "go-restaurant",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
@@ -10,9 +9,9 @@
     "serve:back": "json-server --watch server.json --port 3333",
     "lint:check": "pnpm dlx @biomejs/biome check src",
     "lint:fix": "pnpm dlx @biomejs/biome check --apply src",
-    "tsc": "tsc",
-    "test": "vitest watch",
-    "test:no-watch": "vitest run",
+    "ts:check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
