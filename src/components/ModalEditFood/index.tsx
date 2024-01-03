@@ -42,7 +42,7 @@ const ModalEditFood = ({ isOpen, setIsOpen, editingFood, handleUpdateFood }: IMo
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Form ref={formRef} onSubmit={handleSubmit} initialData={editingFood} placeholder="">
+      <Form ref={formRef} onSubmit={handleSubmit} initialData={editingFood} placeholder=''>
         <h1>Editar Prato</h1>
         <Input name='image' placeholder='Cole o link aqui' />
 

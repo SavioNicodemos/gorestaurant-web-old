@@ -18,7 +18,7 @@ type IFoodPlate = {
   price: string;
   description: string;
   available: boolean;
-}
+};
 
 const Dashboard = () => {
   const [foods, setFoods] = useState<IFoodPlate[]>([]);

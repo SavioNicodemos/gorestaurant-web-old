@@ -1,4 +1,3 @@
-
 import '@testing-library/jest-dom';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import AxiosMock from 'axios-mock-adapter';

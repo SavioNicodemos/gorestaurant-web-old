@@ -10,13 +10,13 @@ type IFoodPlate = {
   price: string;
   description: string;
   available: boolean;
-}
+};
 
 type IProps = {
   food: IFoodPlate;
   handleDelete: (id: number) => void;
   handleEditFood: (food: IFoodPlate) => void;
-}
+};
 
 const Food = ({ food, handleDelete, handleEditFood }: IProps) => {
   const [isAvailable, setIsAvailable] = useState(food.available);
